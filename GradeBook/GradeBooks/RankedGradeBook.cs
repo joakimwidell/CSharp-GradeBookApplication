@@ -20,7 +20,8 @@ namespace GradeBook.GradeBooks
             int block = GenerateBlock(orderedList.Count);
             for (int i = 0; i < orderedList.Count; i++)
             {
-               return SetGrade(i, block);
+                if(averageGrade == orderedList[i].AverageGrade)
+                    return SetGrade(i, block);
             }
             return 'F';
         }
