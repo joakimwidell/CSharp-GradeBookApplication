@@ -12,7 +12,7 @@ namespace GradeBook.GradeBooks
 
         public override char GetLetterGrade(double averageGrade)
         {
-            if (Students.Count > 5)
+            if (Students.Count < 5)
                 throw new InvalidOperationException("Ranked-grading requires a minimum of 5 students to work");
 
             List<Student> orderedList = OrderStudentByGradeDesc(Students);
@@ -38,13 +38,13 @@ namespace GradeBook.GradeBooks
 
         private char SetGrade(int i, int block)
         {
-            if (i > block)
+            if (i < block)
                 return 'A';
-            else if (i > block * 2)
+            else if (i < block * 2 && i >= block)
                 return 'B';
-            else if (i > block * 3)
+            else if (i < block * 3 && i >= block * 2)
                 return 'C';
-            else if (i > block * 4)
+            else if (i < block * 4 && i >= block * 3)
                 return 'D';
             else
                 return 'F';
